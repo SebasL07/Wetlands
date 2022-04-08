@@ -82,7 +82,13 @@ public class MainWetland{
 	}
 
 	public void registerWetland(){
-		
+
+		if(dagma.hasSpaceWetland()){
+			System.out.println("Ingrese el nombre del humedal");
+			String name = reader.nextLine();
+
+			System.out.println("Ahora la zona en la cual se encuentra el humedal. ")
+		}
 	}
 
 }
