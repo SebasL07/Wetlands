@@ -9,18 +9,16 @@ public class Specie{
 
 	private Wetland whereIsFound;
 
-	public Specie(String n, String sN, boolean mS, String type){
+	public Specie(String n, String sN, boolean mS, String type, Wetland wIF){
 		name = n;
 		scientificName =sN;
 		migratorySpecie = mS;
-		this.type = type; 
+		this.type = type;
+		whereIsFound = wIF; 
 	}
 
 	public String getName(){
 		return name;
-	}
-	public void setName(String pName){
-		name = pName;
 	}
 
 	public String getScientificName(){

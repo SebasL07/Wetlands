@@ -40,7 +40,8 @@ public class Wetland{
 		"Estado: " + type + "\n" + 
 		"Area: " + area + "metros cuadrados\n" + 
 		"URL de la foto: " + photoURL + "\n" + 
-		"Area protegida: " + protectedStatus + "\n";
+		"Area protegida: " + protectedStatus + "\n" +
+		nameZoneOptions() + nameZone + "\n";
 	}
 
 	public String addEvent(Event eve){
@@ -102,6 +103,16 @@ public class Wetland{
 		return position;
 	} 
 
-	
+	public String nameZoneOptions(){
+
+		String msg = "";
+
+		if(!(nameZone.equals("")) && nameZone.toLowerCase().equals("rural")){
+			msg = "Nombre del corregimiento: ";
+		} else if(!(nameZone.equals("")) && nameZone.toLowerCase().equals("urbano")){
+			msg = "Nombre del barrio: ";
+		}
+		return msg;
+	}
 
 }

@@ -60,6 +60,7 @@ public class MainWetland{
 		case 2:
 			break;
 		case 3:
+			registerEvent();
 			break;
 		case 4:
 			break;
@@ -88,7 +89,7 @@ public class MainWetland{
 			System.out.println("Ingrese el nombre del humedal");
 			String name = reader.nextLine();
 
-			System.out.println("Ahora la zona en la cual se encuentra el humedal. (Escribir Rural o Urbano)");
+			System.out.println("Ahora la zona en la cual se encuentra el humedal. (Escribir Rural o Urbano)" + name.toLowerCase());
 			String location  = reader.nextLine();
 
 			System.out.println("El humedal es publico o privado? (Escirba publico o privado)");
@@ -114,6 +115,42 @@ public class MainWetland{
 		} else {
 			System.out.println("Lo sentimos, ya se alcanzo el limite de humedales. Se encuentran registrados los 80 humedales.");
 		}
+	}
+
+	public void registerEvent(){
+		String nameWetland = "";
+		do{
+			System.out.println("Ingrese el nombre del humedal en el que se llevara a cabo el evento:");
+			nameWetland = reader.nextLine();
+			System.out.println(dagma.findWetland(nameWetland));
+		}while(dagma.findWetland(nameWetland).equals("Lo sentimos, ese humedal no existe en la base de datos"));
+
+		System.out.println("Ingrese el nombre del organizador:");
+		String name = reader.nextLine();
+
+		System.out.println("Ingrese el tipo de evento: 1) Mantenimiento\n 2) Viaje Escolar\n 3) Actividad de mejoramiento\n 4) Celebracion\n 5)Otro" );
+		int optionEv = reader.nextInt();
+		reader.nextLine();
+
+		System.out.println("Ingrese el costo de realizacion del evento:");
+		double cost = reader.nextDouble();
+		reader.nextLine();
+
+		System.out.println("Ingrese la fecha del evento. Primero el dia:");
+		int d = reader.nextInt();
+		reader.nextLine();
+		System.out.println("Ahora el mes:");
+		int m = reader.nextInt();
+		reader.nextLine();
+		System.out.println("Por ultimo el año:");
+		int y = reader.nextInt();
+		reader.nextLine();
+
+
+		System.out.println("Por ultimo ingrese una pequeña descripción del evento: ");
+		String description = reader.nextLine();
+
+		dagma.addEvent2Wetland(name,cost,description,optionEv,nameWetland, d, m, y );
 	}
 
 }

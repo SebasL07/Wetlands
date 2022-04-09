@@ -6,7 +6,7 @@ public class Dagma{
 	private static final int MAX_SPECIE = 100;
 	private Wetland[] wetlands;
 	private Specie[] species;
-
+	private int indexPos = -1;
 	public Dagma(){
 		
 		wetlands = new Wetland[MAX_WETLAND];
@@ -55,21 +55,29 @@ public class Dagma{
 		return pos;
 	}
 
-	public int findWetland(String name){
+	public String findWetland(String name){
 
 		boolean sentinel = false;
-		int position = -1;
+		int counter = 0;
+		String msg = "";
 
 		for(int i = 0; i < MAX_WETLAND && !sentinel;i++){
 
 			if(wetlands[i] != null && wetlands[i].getName().equals(name)){
 
-				position = i;
+				indexPos = i;
 				sentinel = true;
+				counter = 0;
+			} else {
+				counter++;
 			}
 
+			if(counter == MAX_WETLAND){
+				msg = "Lo sentimos, ese humedal no existe en la base de datos";
+				counter = 0;
+			}
 		}
-		return position;
+		return msg;
 	}
 
 	public int getFirstEmptyPosS(){
@@ -103,13 +111,12 @@ public class Dagma{
 		return msg;
 	}
 
-	public void addEvent2Wetland(String org, double cost, String description,Date eventDate, int numType, String name){
+	public void addEvent2Wetland(String org, double cost, String description, int numType, String nameWetland, int d, int m, int y){
 
 		Events type = null;
 		boolean sen = false;
 
 		switch(numType){
-
 		case 1:
 			type = Events.MAINTENANCE;
 			break;
@@ -124,14 +131,19 @@ public class Dagma{
 		case 4:
 			type = Events.CELEBRATION;
 			break;
+
+		case 5: 
+			type = Events.OTHER;
+			break;
 		}
+		Date newDate = new Date(d,m,y);
+		Event newEvent = new Event(type, org, cost, description, newDate);
 
-		Event newEvent = new Event(type, org, cost, description, eventDate);
-
-		int position = findWetland(name);
+		int position = indexPos;
 
 		if(position != -1){
 			wetlands[position].addEvent(newEvent);
 		}
+
 	}
 }
