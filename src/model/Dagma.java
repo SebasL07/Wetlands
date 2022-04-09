@@ -6,7 +6,6 @@ public class Dagma{
 	private static final int MAX_SPECIE = 100;
 	private Wetland[] wetlands;
 	private Specie[] species;
-	private int indexPos = -1;
 	public Dagma(){
 		
 		wetlands = new Wetland[MAX_WETLAND];
@@ -55,30 +54,21 @@ public class Dagma{
 		return pos;
 	}
 
-	public String findWetland(String name){
+	public int findWetland(String name){
 
 		boolean sentinel = false;
-		int counter = 0;
-		String msg = "";
+		int pos = -1; 
 
 		for(int i = 0; i < MAX_WETLAND && !sentinel;i++){
 
 			if(wetlands[i] != null && wetlands[i].getName().equals(name)){
-
-				indexPos = i;
 				sentinel = true;
-				counter = 0;
-			} else {
-				counter++;
-			}
-
-			if(counter == MAX_WETLAND){
-				msg = "Lo sentimos, ese humedal no existe en la base de datos";
-				counter = 0;
-			}
+				pos = i;
+			} 
 		}
-		return msg;
+		return pos;
 	}
+
 
 	public int getFirstEmptyPosS(){
 
@@ -111,7 +101,7 @@ public class Dagma{
 		return msg;
 	}
 
-	public void addEvent2Wetland(String org, double cost, String description, int numType, String nameWetland, int d, int m, int y){
+	public void addEvent2Wetland(String org, double cost, String description, int numType, int d, int m, int y, String nameW){
 
 		Events type = null;
 		boolean sen = false;
@@ -139,11 +129,68 @@ public class Dagma{
 		Date newDate = new Date(d,m,y);
 		Event newEvent = new Event(type, org, cost, description, newDate);
 
-		int position = indexPos;
+		int position = findWetland(nameW);
 
 		if(position != -1){
 			wetlands[position].addEvent(newEvent);
 		}
 
+	}
+
+	public void addSpecie2Wetland(String name, String scientificName, String migratorySpecie, int numType, String wetlandName){
+
+		TypeSpecie typeSpecie = null;
+		boolean sen = false;
+
+		switch(numType){
+		case 1:
+			typeSpecie = TypeSpecie.AQUATIC_FLORA;
+			break;
+
+		case 2:
+			typeSpecie = TypeSpecie.EARTHBOUND_FLORA;
+			break;
+
+		case 3:
+			typeSpecie =TypeSpecie.BIRD;
+			break;
+		case 4:
+			typeSpecie = TypeSpecie.MAMMAL;
+			break;
+
+		case 5: 
+			typeSpecie = TypeSpecie.AQUATIC;
+			break;
+		}
+		int positionSpecie = getFirstEmptyPosS();
+		if (positionSpecie != -1){
+			species[positionSpecie] = new Specie(name,scientificName,migratorySpecie,typeSpecie); 
+		}
+		
+		int position = findWetland(wetlandName);
+
+		if(position != -1){
+			wetlands[position].addSpecie(species[positionSpecie]);
+		}
+
+
+
+	}
+
+	public String showWetlands(){
+		String msg = "";
+		int count = 0;
+		for(int i = 0; i < MAX_WETLAND; i++){
+			if(wetlands[i] != null){
+				msg += wetlands[i].toString() + "\n";
+			} else{
+				count++;
+			}
+
+			if(count == MAX_WETLAND){
+				msg = "No hay ningun humedal registrado hasta el momento";
+			}
+		}
+		return msg;
 	}
 }

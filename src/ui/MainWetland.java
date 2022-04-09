@@ -35,9 +35,9 @@ public class MainWetland{
 	public int menu(){
 		int option;
 		System.out.println("**Elija una de las opciones escribiendo el numero con la informacion que desee ver (0 para cerrar la app):**\n" + 
-			"1. Registrar un humedal(wip)\n"+ 
-			"2. Registrar una especie(wip)\n"+
-			"3. Registrar un evento(wip)\n"+
+			"1. Registrar un humedal\n"+ 
+			"2. Registrar una especie\n"+
+			"3. Registrar un evento\n"+
 			"4. Mantenimientos de un humedal(wip)\n" +
 			"5. Humedal con mas flora(wip)\n"+
 			"6. *Aun pensando el nombre de la opcion*\n"+
@@ -58,6 +58,7 @@ public class MainWetland{
 			registerWetland();
 			break;
 		case 2:
+			registerSpecie();
 			break;
 		case 3:
 			registerEvent();
@@ -69,6 +70,7 @@ public class MainWetland{
 		case 6:
 			break;
 		case 7:
+			System.out.println(dagma.showWetlands());
 			break;
 		case 8:		
 		}
@@ -89,7 +91,7 @@ public class MainWetland{
 			System.out.println("Ingrese el nombre del humedal");
 			String name = reader.nextLine();
 
-			System.out.println("Ahora la zona en la cual se encuentra el humedal. (Escribir Rural o Urbano)" + name.toLowerCase());
+			System.out.println("Ahora la zona en la cual se encuentra el humedal. (Escribir Rural o Urbano)");
 			String location  = reader.nextLine();
 
 			System.out.println("El humedal es publico o privado? (Escirba publico o privado)");
@@ -122,13 +124,15 @@ public class MainWetland{
 		do{
 			System.out.println("Ingrese el nombre del humedal en el que se llevara a cabo el evento:");
 			nameWetland = reader.nextLine();
-			System.out.println(dagma.findWetland(nameWetland));
-		}while(dagma.findWetland(nameWetland).equals("Lo sentimos, ese humedal no existe en la base de datos"));
+			if(dagma.findWetland(nameWetland) == -1){
+				System.out.println("Lo sentimos, ese humedal no existe en el sistema, intentelo de nuevo");
+			}
+		}while(dagma.findWetland(nameWetland) == -1);
 
 		System.out.println("Ingrese el nombre del organizador:");
 		String name = reader.nextLine();
 
-		System.out.println("Ingrese el tipo de evento: 1) Mantenimiento\n 2) Viaje Escolar\n 3) Actividad de mejoramiento\n 4) Celebracion\n 5)Otro" );
+		System.out.println("Ingrese el tipo de evento:\n 1) Mantenimiento\n 2) Viaje Escolar\n 3) Actividad de mejoramiento\n 4) Celebracion\n 5) Otro" );
 		int optionEv = reader.nextInt();
 		reader.nextLine();
 
@@ -150,7 +154,35 @@ public class MainWetland{
 		System.out.println("Por ultimo ingrese una pequeña descripción del evento: ");
 		String description = reader.nextLine();
 
-		dagma.addEvent2Wetland(name,cost,description,optionEv,nameWetland, d, m, y );
+		dagma.addEvent2Wetland(name,cost,description,optionEv, d, m, y, nameWetland);
 	}
+
+	public void registerSpecie(){
+		String nameWetland = "";
+
+		System.out.println("Ingrese el nombre de la especie:");
+		String name = reader.nextLine();
+
+		System.out.println("Ingrese el nombre cientifico de la especie: ");
+		String scientificName = reader.nextLine();
+
+		System.out.println("Es una especie migratoria? (Si/No)");
+		String migratorySpecie = reader.nextLine();
+
+		System.out.println("Ingrese el tipo de especie:\n 1) Flora acuatica\n 2) Flora terrestre\n 3) Ave\n 4) Mamifero\n 5) Acuatico" );
+		int optionSp = reader.nextInt();
+		reader.nextLine();
+
+		do{
+			System.out.println("Ingrese el nombre del humedal en el que se encuentra la especie:");
+			nameWetland = reader.nextLine();
+			if(dagma.findWetland(nameWetland) == -1){
+				System.out.println("Lo sentimos, ese humedal no existe en el sistema, intentelo de nuevo");
+			}
+		}while(dagma.findWetland(nameWetland) == -1);
+
+		dagma.addSpecie2Wetland(name,scientificName,migratorySpecie,optionSp, nameWetland);
+	}
+
 
 }

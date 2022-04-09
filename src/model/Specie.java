@@ -2,49 +2,30 @@ package model;
 
 public class Specie{
 
+	private static final int MAX_WETLAND = 80;
 	private String name;
 	private String scientificName;
-	private boolean migratorySpecie;
-	private String type;
+	private String migratorySpecie;
+	private TypeSpecie type;
+	private Wetland[] wetlandName;
 
-	private Wetland whereIsFound;
-
-	public Specie(String n, String sN, boolean mS, String type, Wetland wIF){
+	public Specie(String n, String sN, String mS, TypeSpecie type){
 		name = n;
 		scientificName =sN;
 		migratorySpecie = mS;
 		this.type = type;
-		whereIsFound = wIF; 
+		wetlandName = new Wetland[MAX_WETLAND]; 
 	}
 
 	public String getName(){
 		return name;
 	}
 
-	public String getScientificName(){
-		return scientificName;
-	}
-
-	public boolean getMigratorySpecie(){
-		return migratorySpecie;
-	}
-
-	public String getType(){
-		return type;
-	}
-
-	public Wetland getWhereIsFound(){
-		return whereIsFound;
-	}
-
-	public String migratoryYesNo(){
+	public String showNamesW(){
 		String msg = "";
-
-		if(migratorySpecie == true){
-			msg = "Si";
-		}else 
-			msg = "No";
-
+		for(int i = 0; i<MAX_WETLAND; i++){
+			msg += wetlandName[i].getName() + "\n";
+		}
 		return msg;
 	}
 
@@ -52,7 +33,8 @@ public class Specie{
 		return "**Datos de la especie**" + "\n" +
 		"Nombre: " + name + "\n" + 
 		"Nombre Cientifico : "+ scientificName + "\n" +
-		"Migatroria : " +  migratoryYesNo() + "\n" +
-		"Tipo de especie : " + type;
+		"Migatroria : " +  migratorySpecie + "\n" +
+		"Tipo de especie : " + type + "\n" +
+		"Humedal(es)donde se encuentra: " + showNamesW();
 	}
 } 
