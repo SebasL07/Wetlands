@@ -20,10 +20,10 @@ public class MainWetland{
 	public static void main(String[] a){
 		System.out.println("\n**Bienvenido/a a la aplicacion de administracion de humedales.**\n");
 
-		int option = 0;
-
 		MainWetland obj = new MainWetland();
 		obj.startApp();
+
+		int option = 0;
 
 		do{
 			option = obj.menu();
@@ -53,21 +53,22 @@ public class MainWetland{
 		switch(op){
 		case 0:
 			System.out.println("Cerrando el programa. Tenga un buen dia!");
-
+			break;
 		case 1:
-
+			registerWetland();
+			break;
 		case 2:
-
+			break;
 		case 3:
-
+			break;
 		case 4:
-
+			break;
 		case 5:
-
+			break;
 		case 6:
-
+			break;
 		case 7:
-
+			break;
 		case 8:		
 		}
 
@@ -106,12 +107,12 @@ public class MainWetland{
 			System.out.println("Por ultimo, el nombre de la zona:");
 			String nameZone = reader.nextLine();
 
-			System.out.println("Registrando humedal...");
+			System.out.println("\nRegistrando humedal...\n");
 
 			System.out.println(dagma.addWetland(name, location, type, area, url, protec, nameZone));
 
 		} else {
-			System.out.println("Lo sentimos, ya se alcanzo el limite de humedales. Se encuentran registrados los 80 humedales.")
+			System.out.println("Lo sentimos, ya se alcanzo el limite de humedales. Se encuentran registrados los 80 humedales.");
 		}
 	}
 

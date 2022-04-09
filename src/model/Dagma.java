@@ -41,13 +41,13 @@ public class Dagma{
 
 	public int getFirstEmptyPosW(){
 
-		boolean empty = true;
+		boolean empty = false;
 		int pos = -1;
 
 		for(int i = 0; i<MAX_WETLAND && !empty; i++){
 
 			if(wetlands[i] == null){
-				empty = false;
+				empty = true;
 				pos = i;
 			}
 		}
@@ -88,16 +88,16 @@ public class Dagma{
 		return pos;
 	}
 
-	public String addWetland(String name, boolean location, boolean type, double area, String photoURL, boolean protectedStatus, String nameZone){
+	public String addWetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone){
 		
 		int position = getFirstEmptyPosW();
 		String msg = "";
 
-		if (position == -1){
-			msg = "No se pueden anadir mas humedales";
-		} else {
+		if (position != -1){
 			wetlands[position] = new Wetland(name, location, type, area, photoURL, protectedStatus, nameZone);
 			msg = "Se anadio el humedal exitosmente";
+		} else {
+			msg = "No se pueden añadir mas humedales";
 		}
 
 		return msg;
