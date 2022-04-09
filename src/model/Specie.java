@@ -21,10 +21,44 @@ public class Specie{
 		return name;
 	}
 
+	public String addWetland(Wetland w){
+		
+		int position = getFirstEmptyPos();
+		String msg = "";
+
+		if (position != -1){
+			wetlandName[position] = w;
+			msg = "Se anadio el humedal exitosmente";
+		} else {
+			msg = "No se pueden añadir mas humedales";
+		}
+
+		return msg;
+	}
+
+	public int getFirstEmptyPos(){
+
+		boolean empty = false;
+		int pos = -1;
+
+		for(int i = 0; i<MAX_WETLAND && !empty; i++){
+
+			if(wetlandName[i] == null){
+				empty = true;
+				pos = i;
+			}
+		}
+
+		return pos;
+	}
+
 	public String showNamesW(){
 		String msg = "";
 		for(int i = 0; i<MAX_WETLAND; i++){
-			msg += wetlandName[i].getName() + "\n";
+			if(wetlandName[i] != null){
+				msg += (i+1)+") " + wetlandName[i].getName() + "\n";
+			}
+			
 		}
 		return msg;
 	}

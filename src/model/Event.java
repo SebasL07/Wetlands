@@ -9,6 +9,14 @@ public class Event{
 
 	private Date eventDate;
 
+	public Events getType(){
+		return type;
+	}
+
+	public Date getEventDate(){
+		 return eventDate;
+	}
+
 	public Event(Events type, String organizer, double cost, String description, Date eventDate){
 
 		this.type = type;

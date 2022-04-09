@@ -103,6 +103,20 @@ public class Wetland{
 		}
 		return position;
 	} 
+
+	public int countTypeMaintenance(int y){
+
+		int count = 0;
+		Date date = null;
+
+		for(int i = 0; i<MAX_EVENTS; i++){
+			date = events[i].getEventDate();
+			if(events[i].getType() == Events.MAINTENANCE && y == date.getYear()){
+				count++;
+			}
+		}
+		return count;
+	}
 	/*
 	public String nameZoneOptions(String nameZone){
 

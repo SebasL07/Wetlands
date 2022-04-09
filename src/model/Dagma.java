@@ -166,17 +166,16 @@ public class Dagma{
 		}
 		int positionSpecie = getFirstEmptyPosS();
 		if (positionSpecie != -1){
-			species[positionSpecie] = new Specie(name,scientificName,migratorySpecie,typeSpecie); 
+			species[positionSpecie] = new Specie(name,scientificName,migratorySpecie,typeSpecie);
+
 		}
 		
 		int position = findWetland(wetlandName);
 
 		if(position != -1){
 			wetlands[position].addSpecie(species[positionSpecie]);
+			species[positionSpecie].addWetland(wetlands[position]);
 		}
-
-
-
 	}
 
 	public String showWetlands(){
@@ -211,5 +210,23 @@ public class Dagma{
 		return pos;
 	}
 
-	
+	public String specieInWetland(String name){
+		int pos = findSpecie(name);
+		String msg = "";
+
+		if(pos == -1){
+			msg = "No se encontro la especie";
+		} else{
+			msg = species[pos].toString();
+		}
+		return msg;
+	} 
+
+	public int maintenanceInAYear(int y, String name){
+
+		int pos = findWetland(name);
+
+		return wetlands[pos].countTypeMaintenance(y);
+	}
+
 }
