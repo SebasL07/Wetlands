@@ -5,18 +5,18 @@ public class Wetland{
 	private static final int MAX_EVENTS = 20;
 
 	private String name;
-	private boolean location;
-	private boolean type;
+	private String location;
+	private String type;
 	private double area;
 	private String photoURL;
-	private boolean protectedStatus;
+	private String protectedStatus;
 	private String nameZone;
 
 	private Specie[] species;
 	private Event[] events;
 	private EnviormentalPlan percentage;
 
-	public Wetland(String name, boolean location, boolean type, double area, String photoURL, boolean protectedStatus, String nameZone){
+	public Wetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone){
 
 		this.name = name;
 		this.location = location;
@@ -33,55 +33,14 @@ public class Wetland{
 		return name;
 	}
 
-	public String locationString(){
-
-		String msg;
-
-		if(location == true){
-			msg = "Rural" + "\n" +
-			"Nombre del corregimiento: " + nameZone;
-		}else{
-			msg = "Urbano" + "\n" +
-			"Nombre del barrio: " + nameZone;
-		}
-
-		return msg;
-	}
-
-	public String typeString(){
-
-		String msg;
-
-		if(type == true){
-			msg = "Publico";
-		}else{
-			msg = "Privado";
-		}
-
-		return msg;
-	}
-
-	public String protectedStatusString(){
-
-		String msg;
-
-		if(protectedStatus == true){
-			msg = "Si";
-		}else{
-			msg = "No";
-		}
-
-		return msg;
-	}
-
 	public String toString(){
 		return "**Datos del humedal**\n" + 
 		"Nombre: " + name + "\n" +
-		"Localizacion: " + locationString() + "\n" +
-		"Estado: " + typeString() + "\n" + 
+		"Localizacion: " + location + "\n" +
+		"Estado: " + type + "\n" + 
 		"Area: " + area + "metros cuadrados\n" + 
 		"URL de la foto: " + photoURL + "\n" + 
-		"Area protegida: " + protectedStatusString() + "\n";
+		"Area protegida: " + protectedStatus + "\n";
 	}
 
 	public String addEvent(Event eve){
@@ -94,6 +53,21 @@ public class Wetland{
 		} else{
 			events[empPosition] = eve;
 			msg = "Se ha registrado el evento exitosamente";
+		}
+
+		return msg;
+	}
+
+	public String addSpecie(Specie esp){
+
+		int empPosition = getEmptyPositionS();
+		String msg = "";
+
+		if (empPosition == -1){
+			msg = "No se ha podido añadir el evento debido a que no hay mas espacio en la base de datos";
+		} else{
+			species[empPosition] = esp;
+			msg = "Se ha registrado la especie exitosamente";
 		}
 
 		return msg;
@@ -126,7 +100,8 @@ public class Wetland{
 			}
 		}
 		return position;
+	} 
 
-	}
+	
 
 }

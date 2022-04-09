@@ -17,12 +17,4 @@ public class EnviormentalPlan{
 	public String getDescription(){
 		return description;
 	}
-
-	public void setPercentage(double percentage){
-		this.percentage = percentage;
-	}
-
-	public void setDescription(String description){
-		this.description = description;
-	}
 }

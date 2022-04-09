@@ -133,7 +133,5 @@ public class Dagma{
 		if(position != -1){
 			wetlands[position].addEvent(newEvent);
 		}
-
-
 	}
 }

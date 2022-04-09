@@ -87,7 +87,31 @@ public class MainWetland{
 			System.out.println("Ingrese el nombre del humedal");
 			String name = reader.nextLine();
 
-			System.out.println("Ahora la zona en la cual se encuentra el humedal. ")
+			System.out.println("Ahora la zona en la cual se encuentra el humedal. (Escribir Rural o Urbano)");
+			String location  = reader.nextLine();
+
+			System.out.println("El humedal es publico o privado? (Escirba publico o privado)");
+			String type = reader.nextLine();
+
+			System.out.println("Area del humedal: (Solo numeros)");
+			double area = reader.nextDouble();
+			reader.nextLine();
+
+			System.out.println("Agregue la URL de la foto del humedal");
+			String url = reader.nextLine();
+
+			System.out.println("Es una area protegida? (Si/No)");
+			String protec = reader.nextLine();
+
+			System.out.println("Por ultimo, el nombre de la zona:");
+			String nameZone = reader.nextLine();
+
+			System.out.println("Registrando humedal...");
+
+			System.out.println(dagma.addWetland(name, location, type, area, url, protec, nameZone));
+
+		} else {
+			System.out.println("Lo sentimos, ya se alcanzo el limite de humedales. Se encuentran registrados los 80 humedales.")
 		}
 	}
 
