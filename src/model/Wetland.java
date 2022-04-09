@@ -11,12 +11,11 @@ public class Wetland{
 	private String photoURL;
 	private String protectedStatus;
 	private String nameZone;
-
 	private Specie[] species;
 	private Event[] events;
-	private EnviormentalPlan percentage;
+	private EnviormentalPlan plan;
 
-	public Wetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone){
+	public Wetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone, EnviormentalPlan plan){
 
 		this.name = name;
 		this.location = location;
@@ -27,6 +26,7 @@ public class Wetland{
 		this.nameZone = nameZone;
 		species = new Specie[MAX_SPECIE];
 		events = new Event[MAX_EVENTS];
+		this.plan = plan; 
 	}
 
 	public String getName(){
@@ -41,7 +41,8 @@ public class Wetland{
 		"Area: " + area + " metros cuadrados\n" + 
 		"URL de la foto: " + photoURL + "\n" + 
 		"Area protegida: " + protectedStatus + "\n" +
-		"Nombre de la zona: " + nameZone + "\n";
+		"Nombre de la zona: " + nameZone + "\n"+
+		plan.toString() + "%";
 	}
 
 	public String addEvent(Event eve){

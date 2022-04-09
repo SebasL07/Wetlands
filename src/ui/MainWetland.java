@@ -40,7 +40,7 @@ public class MainWetland{
 			"3. Registrar un evento\n"+
 			"4. Mantenimientos de un humedal(wip)\n" +
 			"5. Humedal con mas flora(wip)\n"+
-			"6. *Aun pensando el nombre de la opcion*\n"+
+			"6. *Informacion de una especie\n"+
 			"7. Informacion de los humedales(wip)\n"+
 			"8. Humedal con mas fauna(wip)\n");
 
@@ -107,12 +107,19 @@ public class MainWetland{
 			System.out.println("Es una area protegida? (Si/No)");
 			String protec = reader.nextLine();
 
-			System.out.println("Por ultimo, el nombre de la zona:");
+			System.out.println("El nombre de la zona:");
 			String nameZone = reader.nextLine();
+
+			System.out.println("Ingrese el porcentaje completado del plan medioambiental (Solo numeros)");
+			double per = reader.nextDouble();
+			reader.nextLine();
+
+			System.out.println("Por ultimo, ingrese una pequeña descripción del plan");
+			String des = reader.nextLine();
 
 			System.out.println("\nRegistrando humedal...\n");
 
-			System.out.println(dagma.addWetland(name, location, type, area, url, protec, nameZone));
+			System.out.println(dagma.addWetland(name, location, type, area, url, protec, nameZone, per, des));
 
 		} else {
 			System.out.println("Lo sentimos, ya se alcanzo el limite de humedales. Se encuentran registrados los 80 humedales.");

@@ -11,29 +11,9 @@ public class Date{
 		month = m;
 		year = y;
 	}
-
-	public int getDay(){
-		return day;
-	}
-
-	public int getMonth(){
-		return month;
-	}
-
+	
 	public int getYear(){
 		return year;
-	}
-
-	public void setDay(int pDay){
-		day = pDay;
-	}
-
-	public void setMonth(int pMonth){
-		month = pMonth;
-	}
-
-	public void setYear(int pYear){
-		year = pYear;
 	}
 
 	public String toString(){

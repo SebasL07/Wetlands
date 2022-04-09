@@ -17,4 +17,11 @@ public class EnviormentalPlan{
 	public String getDescription(){
 		return description;
 	}
+
+	public String toString(){
+
+		return "Plan medioambiental\n"+
+		"Porcentaje completado: " + percentage + "\n" +
+		"Descripción: " + description + "\n";
+	}
 }

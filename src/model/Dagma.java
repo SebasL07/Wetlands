@@ -86,13 +86,15 @@ public class Dagma{
 		return pos;
 	}
 
-	public String addWetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone){
+	public String addWetland(String name, String location, String type, double area, String photoURL, String protectedStatus, String nameZone, double per, String des){
 		
 		int position = getFirstEmptyPosW();
 		String msg = "";
 
+		EnviormentalPlan newPlan = new EnviormentalPlan(per, des);
+
 		if (position != -1){
-			wetlands[position] = new Wetland(name, location, type, area, photoURL, protectedStatus, nameZone);
+			wetlands[position] = new Wetland(name, location, type, area, photoURL, protectedStatus, nameZone, newPlan);
 			msg = "Se anadio el humedal exitosmente";
 		} else {
 			msg = "No se pueden añadir mas humedales";
@@ -193,4 +195,21 @@ public class Dagma{
 		}
 		return msg;
 	}
+
+	public int findSpecie(String name){
+		
+		boolean sentinel = false;
+		int pos = -1; 
+
+		for(int i = 0; i < MAX_SPECIE && !sentinel;i++){
+
+			if(species[i] != null && species[i].getName().equals(name)){
+				sentinel = true;
+				pos = i;
+			} 
+		}
+		return pos;
+	}
+
+	
 }
