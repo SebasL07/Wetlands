@@ -72,13 +72,13 @@ public class Dagma{
 
 	public int getFirstEmptyPosS(){
 
-		boolean empty = true;
+		boolean empty = false;
 		int pos = -1;
 
 		for(int i = 0; i<MAX_WETLAND && !empty; i++){
 
 			if(species[i] == null){
-				empty = false;
+				empty = true;
 				pos = i;
 			}
 		}

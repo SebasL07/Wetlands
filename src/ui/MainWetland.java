@@ -42,7 +42,7 @@ public class MainWetland{
 			"5. Humedal con mas flora(wip)\n"+
 			"6. *Aun pensando el nombre de la opcion*\n"+
 			"7. Informacion de los humedales(wip)\n"+
-			"8. Humedal con mas fauna\n");
+			"8. Humedal con mas fauna(wip)\n");
 
 		option = reader.nextInt();
 		reader.nextLine();
