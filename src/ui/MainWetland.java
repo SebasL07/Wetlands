@@ -39,10 +39,10 @@ public class MainWetland{
 			"2. Registrar una especie\n"+
 			"3. Registrar un evento\n"+
 			"4. Mantenimientos de un humedal(wip)\n" +
-			"5. Humedal con menos flora(wip)\n"+
+			"5. Humedal con menos flora\n"+
 			"6. Informacion de una especie\n"+
 			"7. Informacion de los humedales\n"+
-			"8. Humedal con mas fauna(wip)\n");
+			"8. Humedal con mas fauna\n");
 
 		option = reader.nextInt();
 		reader.nextLine();
