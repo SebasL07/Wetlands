@@ -222,11 +222,36 @@ public class Dagma{
 		return msg;
 	} 
 
-	public int maintenanceInAYear(int y, String name){
+	public String wetlandMoreFauna(){
 
-		int pos = findWetland(name);
+		int higher = 0;
+		int pos = 0;
 
-		return wetlands[pos].countTypeMaintenance(y);
+		for(int i = 0; i<MAX_WETLAND;i++){
+			if(wetlands[i] != null && wetlands[i].countFauna() > higher){
+				higher = wetlands[i].countFauna();
+				pos = i;
+			}
+		}
+
+		return "El humedal con mas fauna es " + wetlands[pos].getName() + " con " + higher + " animales.";
+
+	}
+
+	public String wetlandLessFauna(){
+
+		int minor = 0;
+		int pos = 0;
+
+		for(int i = 0; i<MAX_WETLAND;i++){
+			if(wetlands[i] != null && wetlands[i].countFlora() < minor){
+				higher = wetlands[i].countFlora();
+				pos = i;
+			}
+		}
+
+		return "El humedal con menos flora es " + wetlands[pos].getName() + " con " + higher + " especies de flora.";
+
 	}
 
 }

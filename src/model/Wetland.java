@@ -104,14 +104,22 @@ public class Wetland{
 		return position;
 	} 
 
-	public int countTypeMaintenance(int y){
-
+	public int countFauna(){
 		int count = 0;
-		Date date = null;
 
-		for(int i = 0; i<MAX_EVENTS; i++){
-			date = events[i].getEventDate();
-			if(events[i].getType() == Events.MAINTENANCE && y == date.getYear()){
+		for(int i = 0; i<MAX_SPECIE;i++){
+			if(species[i] != null && (species[i].getType() == TypeSpecie.MAMMAL || species[i].getType() == TypeSpecie.AQUATIC || species[i].getType() == TypeSpecie.BIRD)){
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public int countFlora(){
+		int count = 0;
+
+		for(int i = 0; i<MAX_SPECIE;i++){
+			if(species[i] != null && (species[i].getType() == TypeSpecie.AQUATIC_FLORA || species[i].getType() == TypeSpecie.EARTHBOUND_FLORA )){
 				count++;
 			}
 		}

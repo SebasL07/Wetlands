@@ -21,6 +21,9 @@ public class Specie{
 		return name;
 	}
 
+	public TypeSpecie getType(){
+		return type;
+	}
 	public String addWetland(Wetland w){
 		
 		int position = getFirstEmptyPos();

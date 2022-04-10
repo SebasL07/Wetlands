@@ -64,10 +64,10 @@ public class MainWetland{
 			registerEvent();
 			break;
 		case 4:
-			maintenance();
+			
 			break;
 		case 5:
-
+			System.out.println(dagma.wetlandMoreFlora());
 			break;
 		case 6:
 			showSpecie();
@@ -75,7 +75,8 @@ public class MainWetland{
 		case 7:
 			System.out.println(dagma.showWetlands());
 			break;
-		case 8:		
+		case 8:
+			System.out.println(dagma.wetlandMoreFauna());		
 		}
 
 
@@ -201,7 +202,7 @@ public class MainWetland{
 
 		System.out.println(dagma.specieInWetland(name));
 	} 
-
+	/*
 	public void maintenance(){
 		String nameWetland = "";
 		do{
@@ -218,5 +219,5 @@ public class MainWetland{
 
 		System.out.println("En el humedal " + nameWetland + " se han hecho " + dagma.maintenanceInAYear(y, nameWetland));
 	}
-
+	*/
 }
